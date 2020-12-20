@@ -3,17 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "compression": "^1.7.4",
     "d3-scale": "^3.2.0",
     "devexpress-diagram": "2.0.5",
     "devexpress-gantt": "2.0.8",
     "devextreme": "20.2.4",
     "devextreme-quill": "0.9.7",
     "devextreme-react": "20.2.4",
+    "express": "^4.17.1",
     "react": "^16.14.0",
     "react-dom": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
+    "deploy": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
