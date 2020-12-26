@@ -1,31 +1,21 @@
-import ChartDemo, { ChartItemDataType } from "components/chart-demo/ChartDemo";
+import { ChartDemo } from "components/chart-demo/ChartDemo";
 import React, { useEffect, useState } from "react";
 import "./App.scss";
 const App: React.FC = () => {
-  const [data, setData] = useState<ChartItemDataType[]>([]);
-  const getStatus = (value: number) => {
-    return value === 0 ? "Bình thường" : value === 1 ? "Tăng" : "Giảm";
-  };
+  const [data, setData] = useState<number[]>([]);
 
   useEffect(() => {
     let arrInput: number[] = [];
 
-    const generateData = (n: number) => {
-      const ret = [];
-      let yTemp = 0;
-      for (let i = 0; i < n; i += 1) {
-        // Random [0,-1,1]
-        let y = Math.floor(Math.random() * 3 + -1);
-        arrInput.push(y);
-        ret.push({ x: i, y: yTemp + y, type: getStatus(y) });
-        yTemp += y;
-      }
-      console.log("Mảng input", arrInput);
-      return ret;
-    };
-
     const length: any = prompt("Nhập số lượng phần tử mảng", "");
-    setData(generateData(parseInt(length)));
+    for (let i = 0; i < length; i += 1) {
+      // Random [0,-1,1]
+      let numberRan = Math.floor(Math.random() * 3 + -1);
+      arrInput.push(numberRan);
+    }
+    console.log("Mảng input", arrInput);
+
+    setData(arrInput);
   }, []);
 
   return (
