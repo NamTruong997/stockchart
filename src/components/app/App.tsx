@@ -13,7 +13,6 @@ const App: React.FC = () => {
       let numberRan = Math.floor(Math.random() * 3 + -1);
       arrInput.push(numberRan);
     }
-    console.log("Mảng input", arrInput);
 
     setData(arrInput);
   }, []);
