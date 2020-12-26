@@ -82,7 +82,7 @@ export const ChartDemo: React.FC<ChartDemoProps> = (props) => {
         <Point size={data.length < STANDARD_LENGTH ? 7 : 5} />
       </CommonSeriesSettings>
 
-      <ZoomAndPan valueAxis="both" argumentAxis="both" dragToZoom={true} allowMouseWheel={true} panKey="shift" allowTouchGestures={true} />
+      <ZoomAndPan argumentAxis="both" dragToZoom={true} allowMouseWheel={true} panKey="shift" allowTouchGestures={true} />
       <Crosshair enabled={true}>
         <Label visible={true} />
       </Crosshair>
