@@ -33,7 +33,7 @@ const App: React.FC = () => {
     }, arrChart);
   };
 
-  return <div className="com-home">{data.length !== 0 && <ChartDemo data={data} palette={"Material"} />}</div>;
+  return <div className="com-home">{data.length !== 0 && <ChartDemo data={data} palette="Material" />}</div>;
 };
 
 export default App;
