@@ -34,7 +34,7 @@ const App: React.FC = () => {
       <h1 className="text">Lorem Ipsum is simply</h1>
 
       <LineChart
-        data={data.slice(length, length! * 2)}
+        data={data.slice(0, length! * 2)}
         palette="Dark Moon"
         isShowSeconeLine={true}
         name={{ seriesName: "Chart Name", axisName: "Chỉ số", seriesName1: "Chart Name 1", axisName1: "Độ biến động" }}
