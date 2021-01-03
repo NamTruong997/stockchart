@@ -1,44 +1,46 @@
-import { ChartDemo, ChartItemDataType } from "components/chart-demo/ChartDemo";
+import { LineChart, LineChartItemDataType } from "components/line-chart/LineChart";
 import React, { useEffect, useState } from "react";
 import "./App.scss";
 import dataArr from "chart-data.json";
 
 const App: React.FC = () => {
-  const [data] = useState<ChartItemDataType[]>(dataArr);
+  const [data] = useState<LineChartItemDataType[]>(dataArr);
   const [length, setLength] = useState();
 
   useEffect(() => {
-    // let arrInput: number[] = [];
-
     const length: any = prompt("Nhập số lượng phần tử mảng", "");
     setLength(length);
-    // for (let i = 0; i < 700; i += 1) {
-    //   // Random [0,-1,1]
-    //   let numberRan = Math.floor(Math.random() * 3 + -1);
-    //   arrInput.push(numberRan);
-    // }
-
-    //  setData(formatData(arrInput));
   }, []);
 
-  //Chuyển đổi mảng input 0,1 => mảng theo type và giá trị
-  // const formatData = (arr: number[], multiplier: number = 1): ChartItemDataType[] => {
-  //   let arrChart: ChartItemDataType[] = [];
-  //   let yTemp = 0;
+  return (
+    <div className="com-home" style={{ padding: 15 }}>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
 
-  //   return arr.reduce((arrChart, item, index) => {
-  //     let obj: ChartItemDataType = {
-  //       x: index * multiplier,
-  //       y: yTemp + item,
-  //       y1: yTemp,
-  //     };
-  //     arrChart.push(obj);
-  //     yTemp += item;
-  //     return arrChart;
-  //   }, arrChart);
-  // };
+      {data.length !== 0 && <LineChart data={data.slice(0, length)} palette="Material" name={{ seriesName: "Chart Name", axisName: "Chỉ số" }} />}
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
 
-  return <div className="com-home">{data.length !== 0 && <ChartDemo data={data.slice(0, length)} palette="Material" />}</div>;
+      <LineChart
+        data={data.slice(length, length! * 2)}
+        palette="Dark Moon"
+        isShowSeconeLine={true}
+        name={{ seriesName: "Chart Name", axisName: "Chỉ số", seriesName1: "Chart Name 1", axisName1: "Độ biến động" }}
+      />
+    </div>
+  );
 };
 
 export default App;
