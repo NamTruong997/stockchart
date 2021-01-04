@@ -39,6 +39,15 @@ const App: React.FC = () => {
         isShowSeconeLine={true}
         name={{ seriesName: "Chart Name", axisName: "Chỉ số", seriesName1: "Chart Name 1", axisName1: "Độ biến động" }}
       />
+            <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+      <h1 className="text">Lorem Ipsum is simply</h1>
+
     </div>
   );
 };

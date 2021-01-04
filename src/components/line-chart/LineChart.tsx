@@ -55,12 +55,13 @@ export const LineChart: React.FC<LineChartProps> = (props) => {
   };
 
   const onChartZoomEnd = (e: any) => {
+    //Disable chrome scroll
+    e.event.preventDefault();
     e.cancel = e.range.endValue - e.range.startValue < MAX_SCROLL;
   };
 
   const onZoomStart = (e: any) => {
-    e.event.preventDefault();
-    //Disable chrome scroll
+    // e.event.preventDefault();900
     e.cancel = !e.event.ctrlKey;
   };
 
