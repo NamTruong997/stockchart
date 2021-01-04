@@ -50,19 +50,23 @@ export const LineChart: React.FC<LineChartProps> = (props) => {
   const customizeTooltip = (pointInfo: any) => {
     const data: LineChartItemDataType = pointInfo.point.data;
     return {
-      text: `Giá trị: ${data.y} \n Biến động: ${data.y1}`,
+      text: isShowSeconeLine ? `Giá trị: ${data.y} \n Biến động: ${data.y1}` : `Giá trị: ${data.y}`,
     };
   };
 
   const onChartZoomEnd = (e: any) => {
-    //Disable chrome scroll
-    e.event.preventDefault();
-    e.cancel = e.range.endValue - e.range.startValue < MAX_SCROLL;
+    if (e.actionType === "zoom") {
+      //Disable chrome scroll
+      e.event.preventDefault();
+      e.cancel = e.range.endValue - e.range.startValue < MAX_SCROLL;
+    }
   };
 
   const onZoomStart = (e: any) => {
-    // e.event.preventDefault();900
-    e.cancel = !e.event.ctrlKey;
+    //Cancel zoom nếu đang không giữ Control hoặc đang trong tình trạng không Zoom
+    if (e.actionType === "zoom" && !e.event.ctrlKey && Number.isInteger(e.range.startValue) && Number.isInteger(e.range.endValue)) {
+      e.cancel = true;
+    }
   };
 
   const onLegendClick = (e: any) => {
@@ -83,17 +87,17 @@ export const LineChart: React.FC<LineChartProps> = (props) => {
         <ConstantLine width={3} value={0} color="#000000" dashStyle="dash" />
       </ValueAxis>
 
-      {isShowSeconeLine && <Series valueField="y1" name={name?.seriesName1} hoverMode="none" type="spline" axis="y1" />}
+      {isShowSeconeLine && <Series valueField="y1" name={name?.seriesName1} hoverMode="none" type="line" axis="y1" />}
       {isShowSeconeLine && <ValueAxis name="y1" position="right" title={{ text: name?.axisName1 }} />}
 
-      <Tooltip enabled={true} customizeTooltip={customizeTooltip} />
+      <Tooltip enabled={true} customizeTooltip={customizeTooltip} shared={true} />
       <ZoomAndPan argumentAxis="both" dragToZoom={false} allowMouseWheel={true} panKey="ctrl" allowTouchGestures={true} />
       <Crosshair enabled={true} color="#949494" width={3} dashStyle="dot">
         <Label visible={true} backgroundColor="#949494">
           <Font color="#fff" size={12} />
         </Label>
       </Crosshair>
-      <Legend verticalAlignment="bottom" horizontalAlignment="center" />
+      <Legend verticalAlignment="bottom" horizontalAlignment="center" visible={isShowSeconeLine} />
     </Chart>
   );
 };
